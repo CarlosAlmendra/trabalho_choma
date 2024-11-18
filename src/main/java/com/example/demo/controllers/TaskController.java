@@ -5,6 +5,7 @@ import com.example.demo.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -22,6 +23,22 @@ public class TaskController {
     @GetMapping("/status/{status}")
     public List<Task> getTasksByStatus(@PathVariable String status) {
         return taskService.findAll(status);
+    }
+
+    @GetMapping("/priority")
+    public List<Task> getTasksByPriority() {
+        return taskService.orderByPriority();
+    }
+
+    @GetMapping("/filter")
+    public List<Task> filterTasks(@RequestParam String priority, @RequestParam String date) {
+        LocalDate localDate = LocalDate.parse(date);
+        return taskService.filterTasks(priority, localDate);
+    }
+
+    @GetMapping("/report")
+    public String generateReport() {
+        return taskService.generateReport();
     }
 
     @PostMapping
