@@ -13,7 +13,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     List<Task> findByPriority(String priority);
 
-    List<Task> findByDeadLineBeforeAndStatusNot(LocalDate deadLine, String status);
+    List<Task> findByDeadLineBeforeAndStatusNot(String deadLine, String status);
 
     List<Task> findAllByOrderByPriorityOrderAsc();
 }

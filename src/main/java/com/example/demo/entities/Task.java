@@ -5,10 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Task {
@@ -21,7 +18,7 @@ public class Task {
     private LocalDate createDate = LocalDate.now();
     private String status = "To Do";
     private String priority;
-    private LocalDate deadLine;
+    private String deadLine;
     private int priorityOrder;
 
     public Long getId() {
@@ -73,11 +70,11 @@ public class Task {
         this.priority = priority;
     }
 
-    public LocalDate getDeadLine() {
+    public String getDeadLine() {
         return deadLine;
     }
 
-    public void setDeadLine(LocalDate deadLine) {
+    public void setDeadLine(String deadLine) {
         this.deadLine = deadLine;
     }
 
@@ -102,4 +99,3 @@ public class Task {
                 '}';
     }
 }
-
